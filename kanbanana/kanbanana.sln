@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kanbanana", "Kanbanana.csproj", "{BDBD2F3D-9C1C-4DCD-9930-897968484C23}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDBD2F3D-9C1C-4DCD-9930-897968484C23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDBD2F3D-9C1C-4DCD-9930-897968484C23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDBD2F3D-9C1C-4DCD-9930-897968484C23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDBD2F3D-9C1C-4DCD-9930-897968484C23}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EFF93C49-5B4B-4924-A715-25F0CAD637DD}
+	EndGlobalSection
+EndGlobal
