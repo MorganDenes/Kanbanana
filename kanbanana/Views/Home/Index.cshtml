@@ -1,1 +1,19 @@
-﻿<h1>Home Page</h1>
+﻿@using Microsoft.AspNetCore.Authorization;
+@inject IAuthorizationService authorizationService
+
+
+<h1>Home Page</h1>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <h1>User is Authenticated</h1>
+}
+else
+{
+    <h1>User is not Authenticated</h1>
+}
+
+@if ((await authorizationService.AuthorizeAsync(User, "Company")).Succeeded)
+{
+    <h1>User is a Company</h1>
+}

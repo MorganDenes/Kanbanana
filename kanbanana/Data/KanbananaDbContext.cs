@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Kanbanana.Models;
 
 namespace Kanbanana.Data
 {
@@ -14,5 +15,9 @@ namespace Kanbanana.Data
             : base(options)
         {
         }
+
+        public DbSet<Boards> Boards { get; set; }
+        public DbSet<UserBoards> UserBoards { get; set; }
+        public DbSet<UserCompany> UserCompanies { get; set; }
     }
 }
