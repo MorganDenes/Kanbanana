@@ -1,0 +1,36 @@
+﻿@model Kanbanana.Models.Board
+
+<h1>@Html.DisplayFor(model => model.Title)</h1>
+<a href="/Column/Create?boardId=@Model.Id">Add a Column</a>
+<table class="table">
+    <thead>
+        @foreach (var item in Model.Columns)
+        {
+            <tr>
+                <th>@Html.DisplayFor(modelItem => item.Title)</th>
+                <th>
+                    <a href="/Task/Create?columnId=@item.Id&boardId=@Model.Id">Add Task</a>
+                </th>
+                <th>
+                    <a href="/Column/Edit?id=@item.Id">Edit</a>
+                </th>
+                <th>
+                    <a href="/Column/Delete?id=@item.Id">Delete</a>
+                </th>
+            </tr>
+            @foreach(var task in item.Tasks)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => task.Title)</td>
+                    <td>@Html.DisplayFor(modelItem => task.Description)</td>
+                    <td/>
+                    <td>
+                        <a href="/Task/Details?id=@task.Id">View</a>
+                    </td>
+                </tr>
+            }
+        }
+    </thead>
+</table>
+
+

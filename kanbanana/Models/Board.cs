@@ -6,10 +6,10 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Kanbanana.Models
 {
-    public class Boards
+    public class Board
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        //public ICollection<IdentityUser> Users { get; set; }
+        public virtual ICollection<Column> Columns { get; set; }
     }
 }

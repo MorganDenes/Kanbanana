@@ -1,0 +1,12 @@
+﻿@model Kanbanana.Models.Task
+
+
+<h1>Delete Task?</h1>
+
+<form action="/Task/DeleteConfimed?id=@Model.Id&boardId=@Model.BoardId" method="post">
+    <p>Are you sure?</p>
+    <button type="submit">Delete</button>
+</form>
+
+
+

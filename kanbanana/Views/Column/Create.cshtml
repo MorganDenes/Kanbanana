@@ -1,0 +1,10 @@
+﻿@model int
+
+
+<h1>Create a New Column</h1>
+
+<form action="/Column/Create" method="post">
+    <input type="hidden" name="boardId" value="@Model.ToString()" />
+    <input type="text" name="title" />
+    <button type="submit">Add Column</button>
+</form>

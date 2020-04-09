@@ -1,0 +1,14 @@
+﻿@model List<int>
+
+
+<h1>Create a Task</h1>
+
+<form action="/Task/Create" method="post">
+    <input type="hidden" name="columnId" value="@Model[0]" />
+    <input type="hidden" name="boardId" value="@Model[1]" />
+    <p>Title</p>
+    <input type="text" name="title" />
+    <p>Description</p>
+    <input type="text" name="description" />
+    <button type="submit">Add Task</button>
+</form>

@@ -36,27 +36,14 @@ namespace Kanbanana.Controllers
             _email = email;
         }
 
+
+
         public IActionResult Index()
         {
             return View();
         }
 
-        [Authorize]
-        public IActionResult Secret()
-        {
-            return View();
-        }
-        [Authorize(Policy = "Company")]
-        public IActionResult CompanySecret()
-        {
-            return View("Secret");
-        }
 
-        [Authorize(Policy = "Employee")]
-        public IActionResult EmployeeSecret()
-        {
-            return View("Secret");
-        }
 
         public IActionResult Login()
         {
@@ -80,7 +67,9 @@ namespace Kanbanana.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult RegisterCompany()
+
+
+        public IActionResult Register()
         {
             return View();
         }
@@ -125,6 +114,8 @@ namespace Kanbanana.Controllers
             }
             return RedirectToAction("Index");
         }
+
+
 
         public async Task<IActionResult> VerifyEmail(string userId, string code, [FromServices] IAuthorizationService authService)
         {

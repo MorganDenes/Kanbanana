@@ -1,0 +1,25 @@
+﻿@model Kanbanana.Models.DisplayEditTask
+
+
+<h1>Register Account</h1>
+
+<form action="/Task/Edit" method="post">
+    <input type="hidden" name="id" value="@Model.Task.Id" />
+    <input type="hidden" name="boardId" value="@Model.Task.BoardId" />
+    <p>Title</p>
+    <input type="text" name="title" value="@Model.Task.Title"/>
+    <p>Description</p>
+    <input type="text" name="description" value="@Model.Task.Description"/>
+    <p>Column</p>
+    <fieldset>
+        <p>
+            <select name="columnId">
+                @foreach (var column in Model.Columns)
+                {
+                    <option value="@column.Id">@Html.DisplayFor(modelitem => column.Title)</option>
+                }
+            </select>
+        </p>
+    </fieldset>
+    <button type="submit">Edit Task</button>
+</form>

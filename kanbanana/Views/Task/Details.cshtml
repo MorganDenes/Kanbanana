@@ -1,0 +1,25 @@
+﻿@model Kanbanana.Models.Task
+
+
+<div class="list-group-horizontal">
+    <h1>@Model.Title</h1>
+    <p>@Model.Description</p>
+    <div>
+        <p><a href="/Task/Edit?Id=@Model.Id">Edit</a> | <a href="/Task/Delete?Id=@Model.Id">Delete</a></p>
+    </div>
+    <a href="/Board/Details?id=@Model.BoardId">Back to Board</a>
+    <h2>Comments</h2>
+    <form action="/Comment/AddComment" method="post">
+        <input type="hidden" name="taskId" value="@Model.Id" />
+        <input type="text" name="comment" />
+        <button type="submit">Add Comment</button>
+    </form>
+    <table class="table">
+        @foreach (var comment in Model.Comments)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelitem => comment.Text)</td>
+            </tr>
+        }
+    </table>
+</div>

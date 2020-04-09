@@ -1,0 +1,12 @@
+﻿@model Kanbanana.Models.Column
+
+
+<h1>Delete Column?</h1>
+
+<form action="/Column/DeleteConfimed?id=@Model.Id&boardId=@Model.BoardId" method="post">
+    <p>Are you sure?</p>
+    <button type="submit">Delete</button>
+</form>
+
+
+

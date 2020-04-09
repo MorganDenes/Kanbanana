@@ -16,7 +16,10 @@ namespace Kanbanana.Data
         {
         }
 
-        public DbSet<Boards> Boards { get; set; }
+        public DbSet<Board> Boards { get; set; }
+        public DbSet<Column> Columns { get; set; }
+        public DbSet<Kanbanana.Models.Task> Tasks { get; set; }
+        public DbSet<Comment> Comments { get; set; }
         public DbSet<UserBoards> UserBoards { get; set; }
         public DbSet<UserCompany> UserCompanies { get; set; }
     }

@@ -1,7 +1,8 @@
 ﻿@using Microsoft.AspNetCore.Authorization;
 @using Kanbanana.Models
 @inject IAuthorizationService authorizationService
-@model ICollection<Boards>
+@model ICollection<Board>
+
 
 @if ((await authorizationService.AuthorizeAsync(User, "Company")).Succeeded)
 {

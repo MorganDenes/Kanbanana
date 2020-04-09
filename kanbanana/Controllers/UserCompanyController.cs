@@ -19,15 +19,8 @@ namespace Kanbanana.Controllers
 
         public async Task<IActionResult> CreateCompanyConnection(string userId, string companyName)
         {
-            UserCompany userCompany = new UserCompany
-            {
-                UserId = userId,
-                CompanyName = companyName
-            };
-
-            _context.UserCompanies.Add(userCompany);
+            _context.UserCompanies.Add(new UserCompany { UserId = userId, CompanyName = companyName });
             await _context.SaveChangesAsync();
-
             return RedirectToAction("Index", "Company");
         }
     }

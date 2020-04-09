@@ -10,7 +10,6 @@ namespace Kanbanana.Mail
 {
     public interface MailJetInterface
     {
-        void AddOptions(MailJetOptions options);
         Task Send(string emailAddress, string subject, string body, MailJetOptions options);
     }
 }

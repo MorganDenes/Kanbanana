@@ -1,0 +1,11 @@
+﻿@model Kanbanana.Models.Column
+
+
+<h1>Edit Column</h1>
+
+<form action="/Column/Edit" method="post">
+    <input type="hidden" name="id" value="@Model.Id.ToString()" />
+    <input type="hidden" name="boardId" value="@Model.BoardId.ToString()" />
+    <input type="text" name="title" value="@Model.Title" />
+    <button type="submit">Update Column</button>
+</form>

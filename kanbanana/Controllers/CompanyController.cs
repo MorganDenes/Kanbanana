@@ -47,6 +47,7 @@ namespace Kanbanana.Controllers
         }
 
 
+
         public IActionResult ViewUser()
         {
             var users = _userManager.Users.ToList();
@@ -54,9 +55,10 @@ namespace Kanbanana.Controllers
             return View(new DisplayViewModel { Users = convertedUsers });
         }
 
+
+
         public IActionResult CreateUser()
         {
-            // Know what company it's suppose to be
             return View();
         }
 
@@ -105,6 +107,7 @@ namespace Kanbanana.Controllers
         }
 
 
+
         public async Task<IActionResult> AddUserToBoard()
         {
             var companyUser = await _userManager.GetUserAsync(HttpContext.User);
@@ -130,14 +133,14 @@ namespace Kanbanana.Controllers
         {
             _context.UserBoards.Add(new UserBoards { UserId = userId, BoardId = boardId });
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("AddUserToBoard");
         }
     }
 
     public class DisplayUserCompaniesModel
     {
         public List<IdentityUser> Users { get; set; }
-        public List<Boards> Boards { get; set; }
+        public List<Board> Boards { get; set; }
     }
 
 

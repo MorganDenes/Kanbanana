@@ -30,30 +30,48 @@ namespace Kanbanana.Controllers
             _userManager = userManager;
         }
 
+
+
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
 
             var boardIds = await _context.UserBoards
-                                .Where(x => x.UserId == user.Id)
-                                .Select(y => y.BoardId)
-                                .ToListAsync();
+                .Where(x => x.UserId == user.Id)
+                .Select(y => y.BoardId)
+                .ToListAsync();
 
             var boards = await _context.Boards
-                                        .Where(b => boardIds.Contains(b.Id))
-                                        .ToListAsync();
+                .Where(b => boardIds.Contains(b.Id))
+                .ToListAsync();
 
             // !!! Move to less visited code
             var result = await _authorizationService.AuthorizeAsync(User, "Company");
             if (boards.Count == 0 && result.Succeeded)
                 return RedirectToAction("CreateBoard", new { title = "First Board" });
+
             return View(boards);
         }
 
-        //[HttpPost]
+
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(string title)
+        {
+            await _context.Boards.AddAsync(new Board { Title = title });
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
         public async Task<IActionResult> CreateBoard(string title)
         {
-            var board = new Boards
+            var board = new Board
             {
                 Title = title
             };
@@ -62,7 +80,26 @@ namespace Kanbanana.Controllers
             await _context.SaveChangesAsync();
 
             var user = await _userManager.GetUserAsync(HttpContext.User);
-            return RedirectToAction("CreateBoardConnection", "UserBoards", new { userId = user.Id, boardId = board.Id });
+            return RedirectToAction(
+                "CreateBoardConnection",
+                "UserBoard",
+                new { userId = user.Id, boardId = board.Id });
+        }
+
+
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+                return NotFound();
+            var board = await _context.Boards
+                .Include(e => e.Columns)
+                .ThenInclude(f => f.Tasks)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.Id == id);
+            if (board == null)
+                return NotFound();
+            return View(board);
         }
     }
 }

@@ -11,19 +11,6 @@ namespace Kanbanana.Mail
 {
     public class MailJet : MailJetInterface
     {
-        //private readonly UserManager<IdentityUser> _userManager;
-        private MailJetOptions _options;
-
-        //public MailJet(UserManager<IdentityUser> userManager)
-        //{
-        //    _userManager = userManager;
-        //}
-
-        public void AddOptions(MailJetOptions options)
-        {
-            _options = options;
-        }
-
         //public async void ComposeVerificationEmail(IdentityUser user)
         //{
         //    await _userManager.AddToRoleAsync(user, "Employee");
